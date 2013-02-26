@@ -1,0 +1,1 @@
+this is a very rough 'playground' for the front end of scapesync before I incorporate it into the rest of the stack. the purpose of this refactoring it to use less bootstrap, more backbone and have an all together cleaner and more elegant design.
