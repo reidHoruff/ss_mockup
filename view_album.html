@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>ScapeSync</title>
+
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="bootstrap/css/responsive.css" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+
+		<style>
+		body {
+			padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+		}
+
+		html, body {
+			height: 100%;
+			/* The html and body elements cannot have any padding or margin. */
+		}
+
+		/* Wrapper for page content to push down footer */
+		#wrap {
+			min-height: 100%;
+			height: auto !important;
+			height: 100%;
+			/* Negative indent footer by it's height */
+			margin: 0 auto -60px;
+		}
+
+		/* Set the fixed height of the footer here */
+		#push, #footer {
+			height: 60px;
+		}
+		#footer {
+			background-color: #f5f5f5;
+		}
+
+		@media (max-width: 767px) {
+			#footer {
+				margin-left: -20px;
+				margin-right: -20px;
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+		}
+
+		#footer > .container > p{
+			margin-top: 20px;
+			text-align: center;
+		}
+
+
+		/* my style */
+
+		#nav-bar{
+			#background: #f0f0f0;
+			background: #FAF7F7;
+			border-bottom: 1px solid #ddd;
+		}
+
+		.nav > li > a.active{
+			/*background: #e0e0e5*/
+		}
+
+		#nav-list-left > li > a{
+			color: #444;
+			font-weight: bold;
+			text-shadow: none;
+			font-size: 14px;
+		}
+
+		#nav-list-left > li > a:hover{
+			color: black;
+		}
+
+		#nav-list-right > li > a{
+			color: #444;
+			font-weight: bold;
+			text-shadow: none;
+			font-size: 14px;
+			background: transparent;
+		}
+
+		#nav-list-right > li > a:hover{
+			color: black;
+		}
+
+		#title{
+			font-size: 26px;
+			font-family: 'Oleo Script';
+			font-weight: normal;
+			padding-top: 15px;
+			padding-left: 0px;
+		}
+
+		/* greeting */
+
+		#notify-bar-offset{
+			display: none;
+			height: 40px;
+		}
+
+		#notify-bar{
+			/* default blue */
+			background: #2F96B4;
+			color: white;
+			display: none;
+			text-align: center;
+		}
+
+		#notify-bar > .container{
+			padding: 5px;
+		}
+
+		#notify-bar > .container > #notify-content{
+		}
+
+		#notify-bar > .container > #notify-close-button{
+			float: right;
+			color: white;
+			font-weight: bold;
+			margin: 0px;
+		}
+
+		#notify-bar > .container > #notify-content > button{
+			margin: 0px;
+			margin-left: 5px;
+		}
+
+		/* hero */
+		#hero-row{
+			margin-top: 50px;
+			margin-bottom: 50px;
+		}
+
+		#hero-row > .text-side{
+			text-align: center;
+		}
+
+		#hero-row > .text-side > h3{
+			margin-top: 60px;
+		}
+
+		#hero-row > .text-side > .btn{
+			margin-top: 30px;
+		}
+
+		.signup-btn{
+			padding: 10px 40px;
+		}
+
+		#landing-walkthrough{
+			padding-bottom: 100px;
+			background: #333;
+		}
+
+		#landing-walkthrough > .container > .row > div > h3{
+			color: #eee;
+		}
+
+		#landing-walkthrough > .container > .row > div{
+			padding-top: 100px;
+			text-align: center;
+		}
+
+		.center{
+			text-align: center;
+		}
+
+		/*social media buttons */
+		#social-media-row{
+			margin-top: 20px;
+			margin-bottom: 40px;
+		}
+
+		/* view_album css */
+		.accordion-inner > form{
+			margin-bottom: 0px;
+		}
+
+		.accordion-inner > form > input{
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			height: 35px;
+			width: 100%;
+		}
+
+		.accordion-inner > form > button{
+			width: 100%;
+		}
+
+		#info-pane > legend{
+			margin-bottom: 0px;
+		}
+
+		#info-pane > h5{
+			margin-top: 0px;
+			font-weight: normal;
+		}
+
+		#thumbnail-carousel > .carousel-inner > .item > a{
+			float:left;
+			width: 163px;
+			padding: 1px;
+			margin: 3px;
+		}
+
+		#heading-row > .title > legend > i{
+			float: right;
+			margin: 15px;
+			display: none;
+		}
+
+		#heading-row > .title > legend:hover > i{
+			display:inline;
+		}
+
+		#heading-row > .title > legend{
+			font-weight: bold;
+			white-space: nowrap;
+		}
+
+		#heading-row > .title > legend br{
+			display: none;
+
+		}
+
+		#heading-row > .title > legend:hover{
+			background: #f7f7f7;
+		}
+
+		#heading-row > .actions{
+			padding-top: 10px;
+		}
+
+		#heading-row > .actions > button{
+			float: right;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+
+		.red-button{
+			background: #DA4F49;
+			color:white;
+			text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+		}
+
+		.red-button:hover{
+			background: #CA4F49;
+			color: white;
+		}
+
+		.grey-button{
+			background: #eee;
+		}
+
+		.grey-button:hover{
+			background: #ddd;
+		}
+
+		/* pagination */
+		#thumb-media-pagination{
+			text-align: center;
+		}
+		.pagination > ul > li > a{
+			color: #DA4F49;
+		}
+
+		</style>
+	</head>
+
+	<body>
+
+		<div class="navbar navbar-inverse navbar-fixed-top" id="nav-bar">
+			<div id="notify-bar">
+				<div class="container">
+					<span id="notify-content">
+						<strong>HEY!</strong> are you sure you want to delete this album?
+						<button class="btn btn-small red-button">delete</button>
+						<button class="btn btn-small grey-button">keep</button>
+					</span>
+					<a href="#" id="notify-close-button">X</a>
+				</div>
+			</div>
+			<div class="container">
+				<div class="nav-collapse collapse">
+					<ul class="nav" id="nav-list-left">
+						<li><a href="#" id="title" style="font-size: 30px; font-weight: normal;">ScapeSync</a></li>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#" class="active">upload</a></li>
+					</ul>
+					<ul class="nav pull-right" id="nav-list-right">
+						<li class="dropdown"><a href="#" style="padding-right:0;">login</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div id="wrap">
+			<div id="notify-bar-offset"></div>
+
+			<div class="container">
+				<div class="row" id="heading-row">
+					<div class="span8 title">
+						<legend contenteditable="true" id="album-title">This album name is really long and will be content editable<i class="icon-pencil" contenteditable="false"></i></legend>
+					</div>
+					<div class="span4 actions">
+						<button class="btn grey-button" id="toggle-watch-button">watch <i class="icon-eye-open"></i></button>
+						<button class="btn grey-button">branch <i class="icon-leaf"></i></button>
+						<button class="btn red-button" id="delete-album-button">delete <i class="icon-trash icon-white"></i></button>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="span3" id="side-pane">
+						<div id="info-pane">
+							<h5>Owner: Reid Horuff</h5>
+							<h5>Date Created: April 20, 1993</h5>
+						</div>
+					</div>
+					<div class="span9" id="media-pane">
+						<div id="thumbnail-carousel" class="carousel slide">
+							<div class="carousel-inner">
+								<div class="item active" id="carousel-slide-1">
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/200/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/201/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/202/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/203/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/204/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/205/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/206/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/207/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/207/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/207/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/207/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/207/abstract/">
+									</a>
+								</div>
+								<div class="item" id="carousel-slide-2">
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/200/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/201/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/202/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/203/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/204/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/205/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/206/abstract/">
+									</a>
+									<a href="#" class="thumbnail">
+										<img src="http://lorempixel.com/300/207/abstract/">
+									</a>
+								</div>
+							</div>
+						</div>
+						<div id="thumb-media-pagination">
+							<div class="pagination">
+								<ul>
+									<li class=""><a href="#thumbnail-carousel" data-slide="prev">prev</a></li>
+									<li class=""><a href="#" onclick="$('#thumbnail-carousel').carousel(0);">1</a></li>
+									<li class=""><a href="#">2</a></li>
+									<li class=""><a href="#">3</a></li>
+									<li class=""><a href="#">4</a></li>
+									<li class=""><a href="#thumbnail-carousel" data-slide="next">next</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="push"></div>
+		</div>
+
+		<div id="footer">
+			<div class="container">
+				<p><a href="http://horuff.me">Reid Horuff</a> | © 2013 ScapeSync</p>
+			</div>
+		</div>
+
+		<script src="resources/js/jquery.1.9.0.js"></script>
+		<script src="resources/js/json2.js"></script>
+		<script src="resources/js/underscore.1.4.4.js"></script>
+		<script src="resources/js/backbone.0.9.10.js"></script>
+		<script src="resources/js/bootstrap.js"></script>
+		<script>
+
+			(function($){
+
+				var NotifyBarModel = Backbone.Model.extend({
+					defaults:{
+						type: 'notification', /* 'error', 'confirmation', */
+						color: 'white',
+						html: '<strong>Hello</strong>, this is a message.',
+						visible: false,
+					},
+				});
+
+				var notifyBarModel = new NotifyBarModel();
+
+				var NotifyBarView = Backbone.View.extend({
+					el: $('body'),
+
+					events: {
+						'click #notify-close-button': 'closeNotificationBar',
+						'click #delete-album-button': 'promptDeleteAlbum',
+						'click #comfirm-album-delete': 'confirmAlbumDelete',
+					},
+
+					initialize: function(){
+						_.bindAll(this, 'render', 'closeNotificationBar', 'confirmAlbumDelete');
+						this.listenTo(notifyBarModel, 'change', this.render);
+						notifyBarModel.set({visible:true});
+					},
+
+					render: function(){
+						$("#notify-bar").slideUp();
+						$("#notify-bar-offset").slideUp();
+
+						/* wait for hide transition to complete then update html */
+						setTimeout(function(){
+							if(notifyBarModel.get('type') === 'notification'){
+								$('#notify-bar').css({background: '#2f96b4'});
+							}
+							else if(notifyBarModel.get('type') === 'error'){
+								$('#notify-bar').css({background: '#DA4F49'});
+							}
+							else if(notifyBarModel.get('type') === 'confirmation'){
+								$('#notify-bar').css({background: '#5bb75b'});
+							}
+
+							$('#notify-bar .container #notify-content').css({color: notifyBarModel.get('color')});
+							$('#notify-bar .container #notify-content').html(notifyBarModel.get('html'));
+
+							if(notifyBarModel.get('visible')){
+								$("#notify-bar").slideDown();
+								$("#notify-bar-offset").slideDown();
+							}
+						}, 400);
+					},
+
+					promptDeleteAlbum: function(){
+						notifyBarModel.set({
+							html: "Are you sure you want to delete this album? <button id='comfirm-album-delete' class='btn btn-small red-button'>delete</button>",
+							type: 'error',
+							visible:true
+						});
+					},
+
+					closeNotificationBar: function(){
+						notifyBarModel.set({visible:false});
+					},
+
+					confirmAlbumDelete: function(){
+						notifyBarModel.set({
+							html:'Album has been deleted',
+							type: 'confirmation',
+							visible: true,
+						});
+					}
+				});
+
+				var notifyBarView = new NotifyBarView();
+
+				var WatchModel = Backbone.Model.extend({
+					defaults: {
+						watching: false,
+						count: 0,
+					},
+				});
+
+				var watchModel = new WatchModel();
+
+				var WatchView = Backbone.View.extend({
+					el: $('body'),
+
+					events:{
+						'click #toggle-watch-button': 'toggleWatchButton',
+					},
+
+					initialize: function(){
+						_.bindAll(this, 'render', 'toggleWatchButton');
+						this.listenTo(watchModel, 'change', this.render);
+						this.render();
+					},
+
+					render: function(){
+						if(watchModel.get('watching')){
+							$('#toggle-watch-button').html('unwatch <i class="icon-eye-close"></i>');
+						}
+						else{
+							$('#toggle-watch-button').html('watch <i class="icon-eye-open"></i>');
+						}
+					},
+
+					toggleWatchButton: function(){
+						var watching = !watchModel.get('watching');
+						watchModel.set({watching: watching});
+
+						/*
+						if(watching){
+							notifyBarModel.set({
+								type: 'confirmation',
+								html: 'you are now watching this album!',
+							});
+						}
+						else{
+							notifyBarModel.set({
+								type: 'confirmation',
+								html: 'you are no longer watching this album!',
+							});
+						}
+						*/
+					}
+				});
+
+				var watchView = new WatchView();
+
+			})(jQuery);
+
+		</script>
+	</body>
+</html>

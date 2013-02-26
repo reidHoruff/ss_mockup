@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>ScapeSync</title>
+
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="bootstrap/css/responsive.css" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+
+		<style>
+		body {
+			padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+		}
+
+		html, body {
+			height: 100%;
+			/* The html and body elements cannot have any padding or margin. */
+		}
+
+		/* Wrapper for page content to push down footer */
+		#wrap {
+			min-height: 100%;
+			height: auto !important;
+			height: 100%;
+			/* Negative indent footer by it's height */
+			margin: 0 auto -60px;
+		}
+
+		/* Set the fixed height of the footer here */
+		#push, #footer {
+			height: 60px;
+		}
+		#footer {
+			background-color: #f5f5f5;
+		}
+
+		@media (max-width: 767px) {
+			#footer {
+				margin-left: -20px;
+				margin-right: -20px;
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+		}
+
+		#footer > .container > p{
+			margin-top: 20px;
+			text-align: center;
+		}
+
+
+		/* my style */
+
+		#nav-bar{
+			background: #F7F7F7;
+			border-bottom: 1px solid #ddd;
+		}
+
+		.nav > li > a.active{
+			//background: #e0e0e5
+		}
+
+		#nav-list-left > li > a{
+			color: #444;
+			font-weight: bold;
+			text-shadow: none;
+			font-size: 14px;
+		}
+
+		#nav-list-left > li > a:hover{
+			color: black;
+		}
+
+		#nav-list-right > li > a{
+			color: #444;
+			font-weight: bold;
+			text-shadow: none;
+			font-size: 14px;
+			background: transparent;
+		}
+
+		#nav-list-right > li > a:hover{
+			color: black;
+		}
+
+		#title{
+			font-size: 26px;
+			font-family: 'Oleo Script';
+			font-weight: normal;
+			padding-top: 15px;
+			padding-left: 0px;
+		}
+
+		/* greeting */
+
+		#greeting-offset{
+			display: none;
+			height: 40px;
+		}
+
+		#error-offset{
+			display: none;
+			height: 40px;
+		}
+
+		#success-offset{
+			display: none;
+			height: 40px;
+		}
+
+		.notify-bar{
+			display: none;
+			text-align: center;
+		}
+
+		.notify-bar > .container > p{
+			margin: 0;
+			margin-top: 7px;
+			margin-bottom: 7px;
+		}
+
+		.notify-bar > .container > p > a{
+			float: right;
+			color: white;
+			font-weight: bold;
+		}
+
+		#greeting-bar{
+			background: #2F96B4;
+		}
+
+		#error-bar{
+			background: #DA4F49;
+		}
+
+		#success-bar{
+			background: #5BB75B;
+		}
+
+		#error-bar > .container > p{
+			color: white;
+		}
+
+		#greeting-bar > .container > p{
+			color: #f0f0f0;
+		}
+
+		#success-bar > .container > p{
+			color: white;
+		}
+
+		/* hero */
+		#hero-row{
+			margin-top: 50px;
+			margin-bottom: 50px;
+		}
+
+		#hero-row > .text-side{
+			text-align: center;
+		}
+
+		#hero-row > .text-side > h3{
+			margin-top: 60px;
+		}
+
+		#hero-row > .text-side > .btn{
+			margin-top: 30px;
+		}
+
+		.signup-btn{
+			padding: 10px 40px;
+		}
+
+		#landing-walkthrough{
+			padding-bottom: 100px;
+			background: #333;
+			#box-shadow:inset 0px 10px 50px rgba(0, 0, 0, 0.5);
+			#-webkit-box-shadow:inset 0px 0px 120px rgba(0, 0, 0, 0.8);
+			#-moz-box-shadow:inset 0px 0px 120px rgba(0, 0, 0, 0.8);
+		}
+
+		#landing-walkthrough > .container > .row > div > h3{
+			color: #eee;
+		}
+
+		#landing-walkthrough > .container > .row > div{
+			padding-top: 100px;
+			text-align: center;
+		}
+
+		.center{
+			text-align: center;
+		}
+
+		/*social media buttons */
+		#social-media-row{
+			margin-top: 20px;
+			margin-bottom: 40px;
+		}
+
+		/* profile css */
+		#info-span{
+		}
+
+		#info-span > h5{
+			font-weight: normal;
+		}
+
+		/* hack to get thumbnails to not overflow */
+		#media-span > .row{
+			padding-left: 15px;
+		}
+
+		#media-span > .row > .thumbnail{
+			background: #F7F7F7;
+			margin-left: 15px;
+			margin-bottom: 15px;
+		}
+
+		#media-span > .row > .thumbnail > a{
+			text-decoration: none;
+			color: inherit;
+		}
+
+		#media-span > .row > .thumbnail > a > h4{
+			font-weight: normal;
+			font-size: 21px;
+			margin-top: 5px;
+		}
+
+		#media-span > .row > .display-thumbnail:hover{
+			background: #eee;
+		}
+
+		#create-album-thumbnail > form{
+			text-align: center;
+			margin-bottom: 0px;
+		}
+
+		#create-album-thumbnail > form > button{
+			width: 100%;
+		}
+
+		#create-album-thumbnail > form > input{
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			height: 35px;
+			width: 100%;
+		}
+
+		</style>
+	</head>
+
+	<body>
+
+		<div class="navbar navbar-inverse navbar-fixed-top" id="nav-bar">
+			<div id="greeting-bar" class="notify-bar">
+				<div class="container">
+					<p>Welcome! <strong>Create a free account</strong> or <strong>login with facebook</strong><a href="#" onclick="hideGreetingBar();">X</a></p>
+				</div>
+			</div>
+			<div id="error-bar" class="notify-bar">
+				<div class="container">
+					<p><strong>Oops</strong>, <span class="bar-text">there was an error.</span><a href="#" onclick="hideErrorBar();">X</a></p>
+				</div>
+			</div>
+			<div id="success-bar" class="notify-bar">
+				<div class="container">
+					<p><strong>Yay</strong>, something awesome happened.<a href="#" onclick="hideSuccessBar();">X</a></p>
+				</div>
+			</div>
+			<div class="container">
+				<div class="nav-collapse collapse">
+					<ul class="nav" id="nav-list-left">
+						<li><a href="#" id="title" style="font-size: 30px; font-weight: normal;">ScapeSync</a></li>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#" class="active">upload</a></li>
+					</ul>
+					<ul class="nav pull-right" id="nav-list-right">
+						<li class="dropdown"><a href="#" style="padding-right:0;">login</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div id="wrap">
+			<div id="greeting-offset"></div>
+			<div id="error-offset"></div>
+			<div id="success-offset"></div>
+
+			<div class="container">
+				<div class="row">
+					<div class="span3" id="info-span">
+						<legend>Reid Horuff</legend>
+						<h5>Joined April 20, 1993</h5>
+						<h5>Owned Albums: 4</h5>
+						<h5>Watched Albums: 8</h5>
+					</div>
+
+					<div class="span9" id="media-span">
+						<legend>Owned Albums</legend>
+						<div class="row">
+							<div class="span3 thumbnail display-thumbnail">
+								<a href="#">
+									<h4>Fast Cars</h4>
+									<img src="http://placekitten.com/g/300/200">
+								</a>
+							</div>
+							<div class="span3 thumbnail display-thumbnail">
+								<a href="#">
+									<h4>Fast Cars</h4>
+									<img src="http://placekitten.com/g/300/200">
+								</a>
+							</div>
+							<div class="span3 thumbnail action-thumbnail" id="create-album-thumbnail">
+								<a href="#">
+									<h4>Create new Album</h4>
+								</a>
+								<form method="POST" action="#">
+									<input type="text" style="width: fill;">
+									<button type="button" class="btn btn-success btn-large" onclick="testBar();">Create Album</button>
+								</form>
+							</div>
+						</div>
+
+						<legend>Watched Albums</legend>
+						<div class="row">
+							<div class="span3 thumbnail">
+								<a href="#">
+									<h4>Fast Cars</h4>
+									<img src="http://placekitten.com/g/300/200">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="push"></div>
+		</div>
+
+		<div id="footer">
+			<div class="container">
+				<p><a href="http://horuff.me">Reid Horuff</a> | © 2013 ScapeSync</p>
+			</div>
+		</div>
+
+		<script src="resources/js/jquery.1.9.0.js"></script>
+		<script src="resources/js/json2.js"></script>
+		<script src="resources/js/underscore.1.4.4.js"></script>
+		<script src="resources/js/backbone.0.9.10.js"></script>
+		<script src="resources/js/bootstrap.js"></script>
+		<script>
+
+			function hideAllBars(){
+				hideGreetingBar();
+				hideErrorBar();
+				hideSuccessBar();
+			}
+
+			function showGreetingBar(){
+				$("#greeting-bar").slideDown();
+				$("#greeting-offset").slideDown();
+			}
+
+			function showErrorBar(){
+				$("#error-bar").slideDown();
+				$("#error-offset").slideDown();
+			}
+
+			function showSuccessBar(){
+				$("#success-bar").slideDown();
+				$("#success-offset").slideDown();
+			}
+
+			function hideGreetingBar(){
+				$("#greeting-bar").slideUp();
+				$("#greeting-offset").slideUp();
+			}
+
+			function hideErrorBar(){
+				$("#error-bar").slideUp();
+				$("#error-offset").slideUp();
+			}
+
+			function hideSuccessBar(){
+				$("#success-bar").slideUp();
+				$("#success-offset").slideUp();
+			}
+
+			function testBar(){
+				hideAllBars();
+				setTimeout(function(){
+					$("#error-bar .container .bar-text").html("You already own an album named <strong>Fast Cars</strong>.")
+					showErrorBar();
+				}, 300);
+			}
+
+			showGreetingBar();
+			showErrorBar();
+			//showSuccessBar();
+		</script>
+
+	</body>
+</html>
